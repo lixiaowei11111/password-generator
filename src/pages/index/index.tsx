@@ -106,6 +106,13 @@ export default function Index() {
     }
   }, [options, generateSecureRandom])
 
+  // 清空密码
+  const clearPassword = useCallback(() => {
+    setPassword('')
+    setPasswordStrength(0)
+    setStrengthLevel(0)
+  }, [])
+
   // 字符类型选择
   const handleCharTypeChange = (type: string, checked: boolean) => {
     setOptions(prev => {
@@ -158,15 +165,15 @@ export default function Index() {
 
   // 监听密码变化，计算强度
   useEffect(() => {
-    if (userEdited && password) {
+    if (password) {
       const strength = calculateStrength(password)
       setPasswordStrength(strength)
       updateStrengthLevel(strength)
-    } else if (!password) {
+    } else {
       setPasswordStrength(0)
       setStrengthLevel(0)
     }
-  }, [password, userEdited, calculateStrength])
+  }, [password, calculateStrength])
 
   // 处理密码输入框变化
   const handlePasswordChange = (e) => {
@@ -202,6 +209,14 @@ export default function Index() {
           onInput={handlePasswordChange}
         />
         <Button
+          className="clear-btn"
+          size="mini"
+          onClick={clearPassword}
+          disabled={!password}
+        >
+          清空
+        </Button>
+        <Button
           className="copy-btn"
           size="mini"
           onClick={copyToClipboard}
@@ -211,7 +226,7 @@ export default function Index() {
         </Button>
       </View>
 
-      {userEdited && password && (
+      {password && (
         <View className="strength-indicator">
           <View className="strength-header">
             <Text className="strength-text">密码强度:</Text>

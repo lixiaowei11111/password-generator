@@ -35,6 +35,23 @@
       }
     }
 
+    .clear-btn {
+      min-width: 100rpx;
+      height: 80rpx;
+      line-height: 80rpx;
+      background-color: #f56c6c;
+      color: #fff;
+      border-radius: 8rpx;
+      font-size: 24rpx;
+      font-weight: 500;
+      margin-right: 16rpx;
+
+      &[disabled] {
+        background-color: #fab6b6;
+        color: #fff;
+      }
+    }
+
     .copy-btn {
       min-width: 100rpx;
       height: 80rpx;
