@@ -2,7 +2,7 @@
   "miniprogramRoot": "dist/",
   "projectname": "password-generator",
   "description": "a random password generator",
-  "appid": "wxf1f276bc72ab8320",
+  "appid": "wx9690f2e4b869fc1c",
   "setting": {
     "urlCheck": true,
     "es6": false,
